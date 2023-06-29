@@ -50,10 +50,10 @@ FOREIGN KEY (stars_id) REFERENCES stars(id)
 );
 CREATE TABLE IF NOT EXISTS movies_genres(
 movies_id INT UNSIGNED,
-genre_id INT UNSIGNED,
-PRIMARY KEY (movies_id, genre_id),
+genres_id INT UNSIGNED,
+PRIMARY KEY (movies_id, genres_id),
 FOREIGN KEY (movies_id) REFERENCES movies(id),
-FOREIGN KEY (genre_id) REFERENCES genres(id)
+FOREIGN KEY (genres_id) REFERENCES genres(id)
 );
 
 INSERT INTO movies (title,year,image_url,certificate,runtime,imdb_rating,description,metascore,votes,gross) VALUES
@@ -89,8 +89,43 @@ logra grandes cosas a pesar de todo.", 82, 1858266, 330455270),
 100, 1623540, 134966411);
 
 INSERT INTO directors (name,about) VALUES
-();
+("James Wan", "Director de cine conocido por sus películas de terror."),
+("Frank Darabont", "Director y guionista famoso por sus películas dramáticas y de prisión."),
+("Quentin Tarantino", "Director y guionista reconocido por su estilo único y sus películas de diálogos intensos."),
+("David Fincher", "Director conocido por sus películas oscuras y psicológicas."),
+("Robert Zemeckis", "Director famoso por sus películas llenas de imaginación y emoción."),
+("Lana Wachowski", "Directora y guionista conocida por su trabajo en películas de ciencia ficción y acción."),
+("Christopher Nolan", "Director y guionista aclamado por sus películas de ciencia ficción y acción."),
+("Francis Ford Coppola", "Director y guionista icónico en la industria cinematográfica.");
+
 INSERT INTO stars (name,about) VALUES
-();
+("Patrick Wilson", "Actor versátil que ha trabajado en películas de diversos géneros."),
+("Leonardo DiCaprio", "Actor aclamado que ha protagonizado numerosas películas de éxito."),
+("Tim Robbins", "Actor conocido por sus papeles en películas dramáticas y de prisión."),
+("John Travolta", "Actor icónico que ha protagonizado películas de acción y crimen."),
+("Christian Bale", "Actor reconocido por su versatilidad y sus papeles en películas de superhéroes."),
+("Brad Pitt", "Actor famoso por sus interpretaciones en películas de acción y drama."),
+("Tom Hanks", "Actor querido por su carisma y sus papeles en películas emotivas."),
+("Keanu Reeves", "Actor conocido por su papel en películas de ciencia ficción y acción."),
+("Matthew McConaughey", "Actor versátil que ha protagonizado películas de diferentes géneros."),
+("Marlon Brando", "Actor legendario que ha dejado una huella en la historia del cine.");
+
 INSERT INTO genres (name) VALUES
-();
+("Terror"), ("Acción"), ("Drama"), ("Crimen"), ("Ciencia ficción");
+
+INSERT INTO movies_genres (movies_id,genres_id) VALUES
+(1, 1), (2, 4), (3, 3), (4, 4), (5, 2), (6, 3), (7, 3), (8, 2), (9, 5), (10, 4);
+
+INSERT INTO movies_directors (movies_id,directors_id) VALUES
+(1, 1), (2, 7), (3, 2), (4, 3), (5, 7), (6, 4), (7, 5), (8, 6), (9, 7), (10, 8);
+
+INSERT INTO movies_stars (movies_id,stars_id) VALUES
+(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (10, 10);
+
+DELETE FROM movies_genres;
+DELETE FROM movies_directors;
+DELETE FROM movies_stars;
+DELETE FROM movies;
+DELETE FROM genres;
+DELETE FROM directors;
+DELETE FROM stars;
