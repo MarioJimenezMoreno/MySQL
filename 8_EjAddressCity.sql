@@ -67,4 +67,5 @@ INSERT INTO country (country, last_update) VALUES
 ('Germany', CURRENT_TIMESTAMP);
 
 SELECT * FROM country
-INNER JOIN city ON ;
+INNER JOIN city ON country_id = city_id
+INNER JOIN address ON city_id = address_id ;
